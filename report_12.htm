@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 12</u></h1>
+
+				<h2><u>Popularité des abonnements :</u></h2>
+        
+        <p>
+          Affichez les titres des abonnements du plus vendu au moins vendu.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre> 
+              SQL&gt; SELECT count(tp.pass_name) Nombre_ventes, pass_name Abonnement
+                  2  FROM t_pass tp
+                  3   JOIN t_customer tc
+                  4    ON tc.pass_id=tp.pass_id
+                  5  GROUP BY pass_name
+                  6  ORDER BY count(tp.pass_name) DESC;
+            </pre>
+          </code>
+        </div>
+
+          <br>
+
+        <div>
+          <p>
+            <table border='1' align='center' summary='Script output width='40%'>
+              <tr class="tab_head">
+                <th scope="col">
+                  NOMBRE_VENTES
+                </th>
+
+                <th scope="col">
+                  ABONNEMENT
+                </th>
+              </tr>
+
+              <tr class="tab_font">
+                <td align="right">
+                        15
+                </td>
+
+                <td>
+                  Senior
+                </td>
+              </tr>
+
+              <tr class="tab_font">
+                <td align="right">
+                        11
+                </td>
+
+                <td>
+                  Pro
+                </td>
+              </tr>
+
+              <tr class="tab_font">
+                <td align="right">
+                         9
+                </td>
+
+                <td>
+                  15-25
+                </td>
+              </tr>
+            </table>
+          </p>
+          <p>3 ligne(s) sélectionnée(s).</p>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 15</u></h1>
+
+				<h2><u>Organigramme :</u></h2>
+
+        <p>
+          Suite aux nombreux recrutements, OLVoyage souhaite établir un nouvel organigramme. Le nombre des réservations enregistrées par les employés doit suivre leur nom et leur prénom indentés. Etant donné que le dirigeant ne s’occupe pas des réservations, il ne doit pas apparaitre sur l’organigramme.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+              SQL&gt; SELECT distinct count(tr.reservation_id) &quot;Resa&quot;, LPAD(upper(te.last_name)||' '||te.first_name, LENGTH(te.last_name||' '||te.first_name)
+                   +(LEVEL*2)-2, '_') &quot;Employe&quot;, te.employee_id num_employe
+                2  FROM t_employee te
+                3      LEFT OUTER JOIN  t_reservation tr
+                4          ON te.employee_id=tr.employee_id
+                5  START WITH manager_id = (select employee_id from t_employee where manager_id IS NULL)
+                6  CONNECT BY PRIOR tr.employee_id=manager_id
+                7  GROUP BY LPAD(upper(te.last_name)||' '||te.first_name, LENGTH(te.last_name||' '||te.first_name)+(LEVEL*2)-2, '_'), te.employee_id
+                8  ORDER by te.employee_id;
+            </pre>
+          </code>
+        </div>
+
+        <br>
+
+        <div>
+          <p>
+          <table border='1' align='center' summary='Script output' width='60%'>
+          <tr class="tab_head">
+          <th scope="col">
+          Res
+          </th>
+          <th scope="col">
+          Employe
+          </th>
+          <th scope="col">
+          NUM_EMPLOYE
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   6
+          </td>
+          <td>
+          DESNOYER Jerome
+          </td>
+          <td align="right">
+                   2
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   9
+          </td>
+          <td>
+          __COUDERT Reda
+          </td>
+          <td align="right">
+                   3
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   3
+          </td>
+          <td>
+          ROY Thibault
+          </td>
+          <td align="right">
+                   4
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                  15
+          </td>
+          <td>
+          __LANGLOIS Arnaud
+          </td>
+          <td align="right">
+                   5
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   5
+          </td>
+          <td>
+          __GOUSSE Kevin
+          </td>
+          <td align="right">
+                   6
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   5
+          </td>
+          <td>
+          AYOT Davina
+          </td>
+          <td align="right">
+                   7
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   0
+          </td>
+          <td>
+          __MOTHE Francois
+          </td>
+          <td align="right">
+                   8
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                  25
+          </td>
+          <td>
+          __POISSONNIER Maxime
+          </td>
+          <td align="right">
+                   9
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   5
+          </td>
+          <td>
+          SAUREL André
+          </td>
+          <td align="right">
+                  10
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                  10
+          </td>
+          <td>
+          __PATENAUDE Etienne
+          </td>
+          <td align="right">
+                  11
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                  20
+          </td>
+          <td>
+          __FAUBERT Mathieu
+          </td>
+          <td align="right">
+                  12
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   9
+          </td>
+          <td>
+          __MONRENCY Yoan
+          </td>
+          <td align="right">
+                  13
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td align="right">
+                   5
+          </td>
+          <td>
+          __CHALUT Pierre
+          </td>
+          <td align="right">
+                  14
+          </td>
+          </tr>
+          </table>
+          </p>
+          <p>13 ligne(s) sélectionnée(s).</p>
+        </div>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ol voyage</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                                <a href="report_02.htm">Requête 2</a>
+                                <a href="report_03.htm">Requête 3</a>
+                                <a href="report_04.htm">Requête 4</a>
+                                <a href="report_05.htm">Requête 5</a>
+                                <a href="report_06.htm">Requête 6</a>
+                                <a href="report_07.htm">Requête 7</a>
+                                <a href="report_08.htm">Requête 8</a>
+                                <a href="report_09.htm">Requête 9</a>
+                                <a href="report_10.htm">Requête 10</a>
+                                <a href="report_11.htm">Requête 11</a>
+                                <a href="report_12.htm">Requête 12</a>
+                                <a href="report_13.htm">Requête 13</a>
+                                <a href="report_14.htm">Requête 14</a>
+                                <a href="report_15.htm">Requête 15</a>
+                                <a href="report_16.htm">Requête 16</a>
+                                <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 9</u></h1>
+
+				<h2><u>Vitesse moyenne d'un train :</u></h2>
+        <p>
+          Calculez la vitesse moyenne des trains. Utilisez l’affichage suivant : 90 km/h. Pour chacun des trains, vous afficherez son numéro et son nom au format Paris – Bordeaux.
+        </p>
+        <br>
+        <div>
+          <code>
+            <pre>
+              SQL&gt;1 Select tt.train_id Numero, ts.city ||' - '|| tss.city Train , TRUNC(distance/((arrival_time - departure_time)*(60*24))*60, 0)||' km/h' 
+                    vitesse_moyenne
+                  2  from t_train tt
+                  3   JOIN t_station ts
+                  4    ON tt.departure_station_id=ts.station_id
+                  5   JOIN t_station tss
+                  6    ON tt.arrival_station_id=tss.station_id
+                  7  ORDER BY train_id;
+            </pre>
+          </code>
+        </div>
+
+        <p>
+        <table border='1' align='center' summary='Script output' width='40%'>
+        <tr class="tab_head">
+        <th scope="col">
+        NUMERO
+        </th>
+        <th scope="col">
+        TRAIN
+        </th>
+        <th scope="col">
+        VITESSE_MOYENNE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 1
+        </td>
+        <td>
+        Paris - Bordeaux
+        </td>
+        <td>
+        160 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 2
+        </td>
+        <td>
+        Bordeaux - Paris
+        </td>
+        <td>
+        160 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 3
+        </td>
+        <td>
+        Paris - Marseille
+        </td>
+        <td>
+        189 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 4
+        </td>
+        <td>
+        Marseille - Paris
+        </td>
+        <td>
+        189 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 5
+        </td>
+        <td>
+        Marseille - Nantes
+        </td>
+        <td>
+        176 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 6
+        </td>
+        <td>
+        Nantes - Marseille
+        </td>
+        <td>
+        176 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 7
+        </td>
+        <td>
+        Lyon - Toulouse
+        </td>
+        <td>
+        190 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 8
+        </td>
+        <td>
+        Toulouse - Lyon
+        </td>
+        <td>
+        190 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                 9
+        </td>
+        <td>
+        Nantes - Lyon
+        </td>
+        <td>
+        168 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                10
+        </td>
+        <td>
+        Lyon - Nantes
+        </td>
+        <td>
+        126 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                11
+        </td>
+        <td>
+        Nice - Paris
+        </td>
+        <td>
+        188 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                12
+        </td>
+        <td>
+        Paris - Nice
+        </td>
+        <td>
+        188 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                13
+        </td>
+        <td>
+        Marseille - Nimes
+        </td>
+        <td>
+        154 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                14
+        </td>
+        <td>
+        Nimes - Marseille
+        </td>
+        <td>
+        154 km/h
+        </td>
+        </tr>
+        <tr class="tab_head">
+        <th scope="col">
+        NUMERO
+        </th>
+        <th scope="col">
+        TRAIN
+        </th>
+        <th scope="col">
+        VITESSE_MOYENNE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                15
+        </td>
+        <td>
+        Strasbourg - Brest
+        </td>
+        <td>
+        190 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                16
+        </td>
+        <td>
+        Brest - Strasbourg
+        </td>
+        <td>
+        214 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                17
+        </td>
+        <td>
+        Brest - Bordeaux
+        </td>
+        <td>
+        204 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                18
+        </td>
+        <td>
+        Bordeaux - Brest
+        </td>
+        <td>
+        204 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                19
+        </td>
+        <td>
+        Macon - Bordeaux
+        </td>
+        <td>
+        196 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                20
+        </td>
+        <td>
+        Bordeaux - Macon
+        </td>
+        <td>
+        196 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                21
+        </td>
+        <td>
+        Toulouse - Clermont-Ferrand
+        </td>
+        <td>
+        183 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                22
+        </td>
+        <td>
+        Clermont-Ferrand - Toulouse
+        </td>
+        <td>
+        183 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                23
+        </td>
+        <td>
+        Saint-Malo - Nimes
+        </td>
+        <td>
+        200 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                24
+        </td>
+        <td>
+        Nimes - Saint-Malo
+        </td>
+        <td>
+        200 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                25
+        </td>
+        <td>
+        Saint-Malo - Paris
+        </td>
+        <td>
+        175 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                26
+        </td>
+        <td>
+        Paris - Saint-Malo
+        </td>
+        <td>
+        175 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                27
+        </td>
+        <td>
+        Montpellier - Nice
+        </td>
+        <td>
+        171 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                28
+        </td>
+        <td>
+        Nice - Montpellier
+        </td>
+        <td>
+        171 km/h
+        </td>
+        </tr>
+        <tr class="tab_head">
+        <th scope="col">
+        NUMERO
+        </th>
+        <th scope="col">
+        TRAIN
+        </th>
+        <th scope="col">
+        VITESSE_MOYENNE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                29
+        </td>
+        <td>
+        Mulhouse - Brest
+        </td>
+        <td>
+        200 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                30
+        </td>
+        <td>
+        Brest - Mulhouse
+        </td>
+        <td>
+        200 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                31
+        </td>
+        <td>
+        Troyes - Lyon
+        </td>
+        <td>
+        158 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                32
+        </td>
+        <td>
+        Lyon - Troyes
+        </td>
+        <td>
+        158 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                33
+        </td>
+        <td>
+        Valenciennes - Strasbourg
+        </td>
+        <td>
+        182 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                34
+        </td>
+        <td>
+        Strasbourg - Valenciennes
+        </td>
+        <td>
+        182 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                35
+        </td>
+        <td>
+        Calais - Paris
+        </td>
+        <td>
+        165 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                36
+        </td>
+        <td>
+        Paris - Calais
+        </td>
+        <td>
+        165 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                37
+        </td>
+        <td>
+        Dijon - Valenciennes
+        </td>
+        <td>
+        182 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                38
+        </td>
+        <td>
+        Valenciennes - Dijon
+        </td>
+        <td>
+        182 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                39
+        </td>
+        <td>
+        Grenoble - Macon
+        </td>
+        <td>
+        180 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                40
+        </td>
+        <td>
+        Macon - Grenoble
+        </td>
+        <td>
+        180 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                41
+        </td>
+        <td>
+        Le Havre - Paris
+        </td>
+        <td>
+        198 km/h
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td align="right">
+                42
+        </td>
+        <td>
+        Paris - Le Havre
+        </td>
+        <td>
+        198 km/h
+        </td>
+        </tr>
+        </table>
+        </p>
+        <p>42 ligne(s) sélectionnée(s).</p>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

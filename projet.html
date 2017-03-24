@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h2><u>Requête 1: Meilleur employé</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Afficher uniquement un seul résultat : ici le meilleur employé.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Emploi d'une sous-requête avancée dans la clause HAVING.
+          </p>
+
+			</div>
+
+      <div class="bloc1">
+        <h2><u>Requête 2: Acheteurs réservistes sans billet</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Effectuer la jointure entre l'identifiant de la réservation et celui du client.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Utilisation du UNIQUE pour empêcher la création de doublons.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 3: Première réservation effectuée</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Utilisation de la fonction de groupe MIN avec une sous-requête utilisant elle aussi la fonction de groupe MIN.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            La fonction MIN peut permettre d'afficher le premier évènement d'une chronologie.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 4: Titres d’abonnement</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Afficher les cellules contenant une valeur NULL.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Emploi de l'opérateur d'ensemble UNION ALL pour joindre les clients sans abonnement avec ceux ayant un titre  d'abonnement valide ou périmé.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 5: Trajets effectués</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Afficher l'ensemble des résultats sur une seule ligne.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Correspondance et attribution des gares en gare de départ ou d'arrivée.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 6: Statistiques</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Emploi de multiples sous-requêtes dans le SELECT.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            L'utilisation de la table dual permettant l'affichage des résultats sur une seule ligne.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 7: Top-5 des trains</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Utilisation du rownum pour limiter l'affichage des résultats de la requête.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Emploi de plusieurs conditions de jointures pour effectuer la jointure entre les tables.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 8: Clients sans abonnement</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Aucune difficulté rencontrée.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            La valeur NULL correspond ici à un client qui n'a jamais eu d'abonnement, plutôt qu'un client qui n'a pas d'abonnement à l'heure actuelle.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 9: Vitesse moyenne d’un train</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Convertir la différence entre l'heure de départ et d'arrivée en heure.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Opérations entre les heures de départ et d'arrivée des trains.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 10: Réservations « Séniors » de janvier 2017</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Restreindre la requête au seul mois de Janvier 2017.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Effectuer des jointures entre cinq tables.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 11: Trains de Paris</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Calculer les tarifs pour chaque réduction et différencier le total suivant s'il s'agit du week-end ou non.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Effectuer une jointure avec un produit cartésien.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 12: Popularité des abonnements</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Aucune difficulté rencontrée.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Utilisation de la fonction de groupe COUNT pour la clause ORDER BY.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 13: Billets des moins de 25 ans</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Soustraire un nombre de jour à une date donnée.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Déterminer l'âge du client avec la fonction de date MONTHS_BETWEEN et l'utilisation de la fonction de date SYSDATE.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 14: Places disponibles</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Calculer le nombre de places libres.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Utilisation d'une sous requête dans la clause WHERE pour sélectionner les numéros des trains.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 15: Organigramme</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Utilisation de la pseudo-colonne LEVEL dans une requête comprenant une jointure avec une autre table.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Utilisation du LEFT OUTER JOIN pour faire apparaître les employés sans manager.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 16: Augmentation des coordinateurs</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            Aucune difficulté rencontrée.
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            Utilisation d'une sous requête avancée dans le WHERE.
+          </p>
+
+      </div>
+
+      <div class="bloc1">
+        <h2><u>Requête 17: Paiement des réservations</u></h2>
+
+        <h3><u>Difficulté(s) rencontrée(s) :</u></h3>
+
+          <p>
+            
+          </p>
+
+        <h3><u>Point(s) technique(s) intéressant(s) :</u></h3>
+
+          <p>
+            
+          </p>
+
+      </div>
+      
+      <div id="end"></div>
+
+		</div>
+	</body>
+
+</html>

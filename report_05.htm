@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 5</u></h1>
+
+				<h2><u>Trajets effectués :</u></h2>
+
+          <p>
+            Créez le rapport sur tous les trajets effectués par les trains OLVoyage. Affichez le numéro du train, le trajet qui est constitué de la ville de départ avec l’heure de départ et la ville d’arrivée avec l’heure d’arrivée, la distance parcourue et le prix initial.
+          </p>
+
+        <div>
+          <code>
+            <pre>
+          SQL&gt; select tt.train_id||' '|| ts.city||' '|| '('||TO_CHAR(departure_time, 'DD/MM/YY HH24:MI')
+                  ||')' || '- '||tss.city||' '||'('||TO_CHAR(arrival_time, 'DD/MM/YY
+                  HH24:MI')||')' trajet, price prix, distance
+            2  from t_train tt
+            3  JOIN t_station ts
+            4  ON tt.departure_station_id=ts.station_id
+            5  JOIN t_station tss
+            6  ON tt.arrival_station_id=tss.station_id
+            7  ORDER BY train_id;
+            </pre>
+          </code>
+        </div>
+
+        <br>
+
+        <div>
+          <p>
+          <table border='1' align='center' summary='Script output' width='60%'>
+          <tr class="tab_head">
+          <th scope="col">
+          TRAJET
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          <th scope="col">
+          DISTANCE
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          1 Paris (21/01/17 09:00)- Bordeaux (21/01/17 12:00)
+          </td>
+          <td align="right">
+               120,5
+          </td>
+          <td align="right">
+                 482
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          2 Bordeaux (21/01/17 14:30)- Paris (21/01/17 17:30)
+          </td>
+          <td align="right">
+               120,5
+          </td>
+          <td align="right">
+                 482
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          3 Paris (22/01/17 12:00)- Marseille (22/01/17 15:15)
+          </td>
+          <td align="right">
+                 154
+          </td>
+          <td align="right">
+                 616
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          4 Marseille (22/01/17 18:00)- Paris (22/01/17 21:15)
+          </td>
+          <td align="right">
+                 154
+          </td>
+          <td align="right">
+                 616
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          5 Marseille (21/01/17 07:15)- Nantes (21/01/17 11:00)
+          </td>
+          <td align="right">
+               165,5
+          </td>
+          <td align="right">
+                 662
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          6 Nantes (21/01/17 18:15)- Marseille (21/01/17 22:00)
+          </td>
+          <td align="right">
+               165,5
+          </td>
+          <td align="right">
+                 662
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          7 Lyon (22/01/17 09:00)- Toulouse (22/01/17 11:00)
+          </td>
+          <td align="right">
+                  95
+          </td>
+          <td align="right">
+                 380
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          8 Toulouse (22/01/17 17:00)- Lyon (22/01/17 19:00)
+          </td>
+          <td align="right">
+                  95
+          </td>
+          <td align="right">
+                 380
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          9 Nantes (23/01/17 11:00)- Lyon (23/01/17 12:30)
+          </td>
+          <td align="right">
+                  63
+          </td>
+          <td align="right">
+                 252
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          10 Lyon (24/01/17 09:30)- Nantes (24/01/17 11:30)
+          </td>
+          <td align="right">
+                  63
+          </td>
+          <td align="right">
+                 252
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          11 Nice (24/01/17 08:00)- Paris (24/01/17 11:35)
+          </td>
+          <td align="right">
+              168,75
+          </td>
+          <td align="right">
+                 675
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          12 Paris (24/01/17 16:30)- Nice (24/01/17 20:05)
+          </td>
+          <td align="right">
+              168,75
+          </td>
+          <td align="right">
+                 675
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          13 Marseille (23/01/17 07:40)- Nimes (23/01/17 08:10)
+          </td>
+          <td align="right">
+               19,25
+          </td>
+          <td align="right">
+                  77
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          14 Nimes (24/01/17 19:30)- Marseille (24/01/17 20:00)
+          </td>
+          <td align="right">
+               19,25
+          </td>
+          <td align="right">
+                  77
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          TRAJET
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          <th scope="col">
+          DISTANCE
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          15 Strasbourg (24/01/17 11:40)- Brest (24/01/17 16:10)
+          </td>
+          <td align="right">
+               214,5
+          </td>
+          <td align="right">
+                 858
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          16 Brest (24/01/17 16:20)- Strasbourg (24/01/17 20:20)
+          </td>
+          <td align="right">
+               214,5
+          </td>
+          <td align="right">
+                 858
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          17 Brest (25/01/17 07:00)- Bordeaux (25/01/17 09:30)
+          </td>
+          <td align="right">
+              127,75
+          </td>
+          <td align="right">
+                 511
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          18 Bordeaux (25/01/17 18:30)- Brest (25/01/17 21:00)
+          </td>
+          <td align="right">
+              127,75
+          </td>
+          <td align="right">
+                 511
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          19 Macon (24/01/17 10:00)- Bordeaux (24/01/17 12:10)
+          </td>
+          <td align="right">
+              106,25
+          </td>
+          <td align="right">
+                 425
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          20 Bordeaux (24/01/17 15:00)- Macon (24/01/17 17:10)
+          </td>
+          <td align="right">
+              106,25
+          </td>
+          <td align="right">
+                 425
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          21 Toulouse (25/01/17 12:30)- Clermont-Ferrand (25/01/17 14:00)
+          </td>
+          <td align="right">
+               68,75
+          </td>
+          <td align="right">
+                 275
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          22 Clermont-Ferrand (25/01/17 16:30)- Toulouse (25/01/17 18:00)
+          </td>
+          <td align="right">
+               68,75
+          </td>
+          <td align="right">
+                 275
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          23 Saint-Malo (14/01/17 09:00)- Nimes (14/01/17 13:00)
+          </td>
+          <td align="right">
+                 200
+          </td>
+          <td align="right">
+                 800
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          24 Nimes (14/01/17 16:00)- Saint-Malo (14/01/17 20:00)
+          </td>
+          <td align="right">
+                 200
+          </td>
+          <td align="right">
+                 800
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          25 Saint-Malo (16/01/17 10:00)- Paris (16/01/17 12:00)
+          </td>
+          <td align="right">
+                87,5
+          </td>
+          <td align="right">
+                 350
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          26 Paris (16/01/17 15:30)- Saint-Malo (16/01/17 17:30)
+          </td>
+          <td align="right">
+                87,5
+          </td>
+          <td align="right">
+                 350
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          27 Montpellier (18/01/17 09:30)- Nice (18/01/17 11:10)
+          </td>
+          <td align="right">
+               71,25
+          </td>
+          <td align="right">
+                 285
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          28 Nice (18/01/17 19:00)- Montpellier (18/01/17 20:40)
+          </td>
+          <td align="right">
+               71,25
+          </td>
+          <td align="right">
+                 285
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          TRAJET
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          <th scope="col">
+          DISTANCE
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          29 Mulhouse (20/01/17 10:00)- Brest (20/01/17 14:30)
+          </td>
+          <td align="right">
+                 225
+          </td>
+          <td align="right">
+                 900
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          30 Brest (20/01/17 15:00)- Mulhouse (20/01/17 19:30)
+          </td>
+          <td align="right">
+                 225
+          </td>
+          <td align="right">
+                 900
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          31 Troyes (22/01/17 12:00)- Lyon (22/01/17 14:00)
+          </td>
+          <td align="right">
+                  79
+          </td>
+          <td align="right">
+                 316
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          32 Lyon (22/01/17 16:00)- Troyes (22/01/17 18:00)
+          </td>
+          <td align="right">
+                  79
+          </td>
+          <td align="right">
+                 316
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          33 Valenciennes (24/01/17 11:10)- Strasbourg (24/01/17 13:50)
+          </td>
+          <td align="right">
+               121,5
+          </td>
+          <td align="right">
+                 486
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          34 Strasbourg (24/01/17 17:00)- Valenciennes (24/01/17 19:40)
+          </td>
+          <td align="right">
+               121,5
+          </td>
+          <td align="right">
+                 486
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          35 Calais (26/01/17 11:00)- Paris (26/01/17 12:45)
+          </td>
+          <td align="right">
+                72,5
+          </td>
+          <td align="right">
+                 290
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          36 Paris (27/01/17 13:00)- Calais (27/01/17 14:45)
+          </td>
+          <td align="right">
+                72,5
+          </td>
+          <td align="right">
+                 290
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          37 Dijon (28/01/17 09:00)- Valenciennes (28/01/17 11:35)
+          </td>
+          <td align="right">
+              117,75
+          </td>
+          <td align="right">
+                 471
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          38 Valenciennes (28/01/17 14:00)- Dijon (28/01/17 16:35)
+          </td>
+          <td align="right">
+              117,75
+          </td>
+          <td align="right">
+                 471
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          39 Grenoble (30/01/17 08:30)- Macon (30/01/17 09:10)
+          </td>
+          <td align="right">
+                  30
+          </td>
+          <td align="right">
+                 120
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          40 Macon (30/01/17 10:10)- Grenoble (30/01/17 10:50)
+          </td>
+          <td align="right">
+                  30
+          </td>
+          <td align="right">
+                 120
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          41 Le Havre (01/02/17 12:10)- Paris (01/02/17 13:00)
+          </td>
+          <td align="right">
+               41,25
+          </td>
+          <td align="right">
+                 165
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          42 Paris (02/02/17 19:10)- Le Havre (02/02/17 20:00)
+          </td>
+          <td align="right">
+               41,25
+          </td>
+          <td align="right">
+                 165
+          </td>
+          </tr>
+          </table>
+          <p>
+          <p>42 ligne(s) sélectionée(s)</p>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+
+</html>

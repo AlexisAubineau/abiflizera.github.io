@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ol voyage</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+  <body>
+    <div class="site_contents">
+      <div class="nav_barre">
+        <nav> 
+          <ul>
+            <li><a href="index.html">Home</a></li>
+              <li><a href="projet.html">Suivi du projet</a></li>
+              <li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+                <div class="dropdown-content">
+                    <a href="report_01.htm">Requête 1</a>
+                                <a href="report_02.htm">Requête 2</a>
+                                <a href="report_03.htm">Requête 3</a>
+                                <a href="report_04.htm">Requête 4</a>
+                                <a href="report_05.htm">Requête 5</a>
+                                <a href="report_06.htm">Requête 6</a>
+                                <a href="report_07.htm">Requête 7</a>
+                                <a href="report_08.htm">Requête 8</a>
+                                <a href="report_09.htm">Requête 9</a>
+                                <a href="report_10.htm">Requête 10</a>
+                                <a href="report_11.htm">Requête 11</a>
+                                <a href="report_12.htm">Requête 12</a>
+                                <a href="report_13.htm">Requête 13</a>
+                                <a href="report_14.htm">Requête 14</a>
+                                <a href="report_15.htm">Requête 15</a>
+                                <a href="report_16.htm">Requête 16</a>
+                                <a href="report_17.htm">Requête 17</a>
+                </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="logo">
+        <img src="images/logo.png" alt="logo">
+      </div>
+
+      <div class="bloc1">
+        <h1 id="titre"><u>Requête 8</u></h1>
+
+        <h2><u>Clients sans abonnement :</u></h2>
+        <p>nom, prénom et l adresse des clients qui n ont jamais eu d abonnements. Trier par nom et prénom.</p>
+        <br>
+        <div>
+          <code>
+            <pre>
+              SQL&gt;1 SELECT last_name ||' '|| first_name Jamais_eu_d_abonnement, address adresse
+                  2  FROM t_customer
+                  3  WHERE pass_id IS NULL;
+            </pre>
+          </code>
+        </div>
+        <br>
+        <p>
+        <table border='1' align='center' summary='Script output' width='60%'>
+        <tr class="tab_head">
+        <th scope="col">
+        JAMAIS_EU_D_ABONNEMENT
+        </th>
+        <th scope="col">
+        ADRESSE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Fleming Steve
+        </td>
+        <td>
+        01 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Wayne Williams
+        </td>
+        <td>
+        02 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Richardson Lauren
+        </td>
+        <td>
+        03 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Reynolds Philip
+        </td>
+        <td>
+        05 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Healy Stacy
+        </td>
+        <td>
+        06 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Novak Craig
+        </td>
+        <td>
+        07 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Oswald Georges
+        </td>
+        <td>
+        09 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Dawn Lane
+        </td>
+        <td>
+        13 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Wayne Leonard
+        </td>
+        <td>
+        14 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Patterson Philip
+        </td>
+        <td>
+        17 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Rice Joe
+        </td>
+        <td>
+        18 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Larson Arthur
+        </td>
+        <td>
+        20 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Miler Victor
+        </td>
+        <td>
+        22 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Herman Smith
+        </td>
+        <td>
+        23 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_head">
+        <th scope="col">
+        JAMAIS_EU_D_ABONNEMENT
+        </th>
+        <th scope="col">
+        ADRESSE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Gordon Rosemary
+        </td>
+        <td>
+        25 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Dalton Vance
+        </td>
+        <td>
+        27 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Bauer John
+        </td>
+        <td>
+        29 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Harris Brandy
+        </td>
+        <td>
+        30 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Ferguson Angie
+        </td>
+        <td>
+        31 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Cunningham Charles
+        </td>
+        <td>
+        33 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Fraser Thomas
+        </td>
+        <td>
+        34 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Barnes Katherine
+        </td>
+        <td>
+        36 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Sattler Jack
+        </td>
+        <td>
+        38 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Richards Paul
+        </td>
+        <td>
+        40 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Landers Robert
+        </td>
+        <td>
+        41 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Holmes Martin
+        </td>
+        <td>
+        43 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Williams Megan
+        </td>
+        <td>
+        44 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Fraser Faun
+        </td>
+        <td>
+        48 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_head">
+        <th scope="col">
+        JAMAIS_EU_D_ABONNEMENT
+        </th>
+        <th scope="col">
+        ADRESSE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Miller Alex
+        </td>
+        <td>
+        52 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Hamilton Dory
+        </td>
+        <td>
+        55 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Maugard Gregory
+        </td>
+        <td>
+        57 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Smith Kevin
+        </td>
+        <td>
+        58 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Barnes Bill
+        </td>
+        <td>
+        59 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Novak Jessie
+        </td>
+        <td>
+        60 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        McDaniels Wayne
+        </td>
+        <td>
+        62 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Morris Tim
+        </td>
+        <td>
+        63 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Burton Albert
+        </td>
+        <td>
+        65 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Hess Katherine
+        </td>
+        <td>
+        67 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Harris Joe
+        </td>
+        <td>
+        69 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        McDaniels Stacy
+        </td>
+        <td>
+        71 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Petersen David
+        </td>
+        <td>
+        72 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Erickson Leonard
+        </td>
+        <td>
+        74 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_head">
+        <th scope="col">
+        JAMAIS_EU_D_ABONNEMENT
+        </th>
+        <th scope="col">
+        ADRESSE
+        </th>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Fields Romain
+        </td>
+        <td>
+        75 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Oswald Ty
+        </td>
+        <td>
+        78 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Gordon Roy
+        </td>
+        <td>
+        79 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        <tr class="tab_font">
+        <td>
+        Herman Tom
+        </td>
+        <td>
+        81 du Chateau Landon - F-75010 Paris
+        </td>
+        </tr>
+        </table>
+        </p>
+        <p>46 ligne(s) sélectionnée(s).</p>
+      </div>
+      <br>
+    </div>
+  </body>
+
+</html>

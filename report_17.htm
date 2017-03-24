@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 17</u></h1>
+
+				<h2><u>Paiement des réservations :</u></h2>
+
+        <p>
+          Les coordinateurs de ventes souhaitent disposer d’un outil simple et rapide pour enregistrer les paiements des réservations.
+          <br>
+          Créez un script interrogeant l’utilisateur, à chaque exécution, sur le numéro de la réservation et son type de paiement.
+          <br>
+          Le prix de la réservation doit être calculé et enregistré.
+          <br>
+          Un rapport sur la réservation doit également être créé. Le nom du fichier de rapport correspondra à l’exemple suivant : resa_NRéservation.htm (ex : resa_13.htm).
+          <br>
+          Enregistrez les paiements pour les réservations suivantes.
+          <br>
+          Numéro de la réservation  Type de paiement<br>
+          13  CB<br>
+          18  Especes<br>
+          23  CB<br>
+          31  Especes<br>
+          <br>
+          Les types de paiement acceptés dans la colonne (sensibles à la casse) sont :
+          <br>
+          Cash<br>
+          Cheque<br>
+          Credit Card<br>
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+              define resa =''
+              define Moyen_de_paiement=''
+              undefine resa
+              undefine Moyen_de_paiement
+              UPDATE T_RESERVATION
+              SET buy_method = '&Moyen_de_paiement',
+              price =
+              (SELECT CASE
+              WHEN TO_CHAR(t.arrival_time, 'Day') IN ('Samedi', 'Dimanche')
+              THEN (t.price*(1-(NVL(p.discount_we_pct, 0)/100)))*(1+(NVL(wa.class_pct, 0)/100))
+              WHEN TO_CHAR(t. arrival_time, 'Day') = 'Vendredi' AND TO_CHAR(t. arrival_time, 'HH24') > 18
+              THEN (t.price*(1-(NVL(p.discount_we_pct, 0)/100)))*(1+(NVL(wa.class_pct, 0)/100))
+              ELSE
+              (t.price*(1-(NVL(p.discount_pct, 0)/100)))*(1+(NVL(wa.class_pct, 0)/100))
+              END
+                                      FROM T_RESERVATION r
+                                      JOIN T_CUSTOMER c
+                                      ON c.customer_id = r.buyer_id
+                                      LEFT OUTER JOIN T_PASS p
+                                      USING (pass_id)
+                                      JOIN T_TICKET ti
+                                      USING (reservation_id)
+                                      JOIN T_WAGON_TRAIN
+                                      USING (wag_tr_id)
+                                      JOIN T_TRAIN t
+                                      USING (train_id)
+                                      JOIN T_WAGON wa
+                                      USING (wagon_id)
+                                      WHERE reservation_id = &&resa)
+              WHERE reservation_id = &resa;
+            </pre>
+          </code>
+        </div>
+			</div>
+		</div>
+	</body>
+
+</html>

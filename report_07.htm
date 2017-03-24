@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                                <a href="report_02.htm">Requête 2</a>
+                                <a href="report_03.htm">Requête 3</a>
+                                <a href="report_04.htm">Requête 4</a>
+                                <a href="report_05.htm">Requête 5</a>
+                                <a href="report_06.htm">Requête 6</a>
+                                <a href="report_07.htm">Requête 7</a>
+                                <a href="report_08.htm">Requête 8</a>
+                                <a href="report_09.htm">Requête 9</a>
+                                <a href="report_10.htm">Requête 10</a>
+                                <a href="report_11.htm">Requête 11</a>
+                                <a href="report_12.htm">Requête 12</a>
+                                <a href="report_13.htm">Requête 13</a>
+                                <a href="report_14.htm">Requête 14</a>
+                                <a href="report_15.htm">Requête 15</a>
+                                <a href="report_16.htm">Requête 16</a>
+                                <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 7</u></h1>
+
+				<h2><u>Top-5 des trains :</u></h2>
+
+        <p>
+          Affichez le Top-5 des trains (les 5 premiers trains) par rapport aux nombres de billets réservés. Le train doit être affiché de manière suivante Paris – Brest.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+              SQL&gt; select * from (select tt.train_id|| ' ' ||ts.city||' - '||tss.city &quot;trajet&quot;, count(reservation_id) nombre_resa
+                2  from t_train tt
+                3  join t_wagon_train twg
+                4  ON tt.train_id=twg.train_id
+                5  JOIN t_ticket ttk
+                6  ON twg.wag_tr_id=ttk.wag_tr_id
+                7  JOIN t_reservation tr
+                8  ON ttk.reservation_id=tr.reservation_id
+                9  JOIN t_station ts
+               10  ON tt.departure_station_id=ts.station_id
+               11  JOIN t_station tss
+               12  ON tt.arrival_station_id=tss.station_id
+               13  group by tt.train_id,ts.city,tss.city
+               14  order by count(reservation_id) desc)
+               15  where rownum &lt;=5;
+            </pre>
+          </code>
+        </div>
+
+        <br>
+
+        <div>
+            <p>
+            <table border='1' align='center' summary='Script output' width='40%'>
+            <tr class="tab_head">
+            <th scope="col">
+            trajet
+            </th>
+            <th scope="col">
+            NOMBRE_RESA
+            </th>
+            </tr>
+            <tr class="tab_font">
+            <td>
+            3 Paris - Marseille
+            </td>
+            <td align="right">
+                     8
+            </td>
+            </tr>
+            <tr class="tab_font">
+            <td>
+            2 Bordeaux - Paris
+            </td>
+            <td align="right">
+                     6
+            </td>
+            </tr>
+            <tr class="tab_font">
+            <td>
+            1 Paris - Bordeaux
+            </td>
+            <td align="right">
+                     5
+            </td>
+            </tr>
+            <tr class="tab_font">
+            <td>
+            16 Brest - Strasbourg
+            </td>
+            <td align="right">
+                     4
+            </td>
+            </tr>
+            <tr class="tab_font">
+            <td>
+            4 Marseille - Paris
+            </td>
+            <td align="right">
+                     4
+            </td>
+            </tr>
+            </table>
+            </p>
+            <p>5 ligne(s) sélectionnée(s)</p>
+        </div>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

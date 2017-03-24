@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 10</u></h1>
+
+				<h2><u>Réservations "Séniors" de janvier 2017 :</u></h2>
+
+        <p>
+          Affichez le nombre de clients qui ont bénéficié de laréduction « Sénior » 
+          pour réserver des billets pour les trains 
+          partant au mois de janvier 2017. Ne prenez en compte que les réservations payées. Supposez que vous ne vous rappelez pas du nombre de jours dans le mois de janvier.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+                SQL&gt;1 SELECT count(tr.reservation_id) Resa_Reduc_Senior_janvier_2017
+                    2  FROM t_reservation tr
+                    3   JOIN t_ticket ttk
+                    4    ON tr.reservation_id=ttk.reservation_id
+                    5   JOIN t_wagon_train twg
+                    6    ON ttk.wag_tr_id=twg.wag_tr_id
+                    7   JOIN t_train tt
+                    8    ON twg.train_id=tt.train_id
+                    9   JOIN t_customer tc
+                   10    ON ttk.customer_id=tc.customer_id
+                   11   JOIN t_pass tp
+                   12    ON tc.pass_id=tp.pass_id
+                   13  WHERE discount_pct=40
+                   14  AND tr.buy_method IS NOT NULL
+                   15  AND tt.departure_time LIKE '__/%01/17%';
+            </pre>
+          </code>
+        </div>
+
+        <div>
+          <p>
+            <table border='1' align='center' summary='Script output' width='40%'>
+              <tr class="tab_head">
+                <th scope="col">
+                RESA_REDUC_SENIOR_JANVIER_2017
+                </th>
+              </tr>
+
+              <tr class="tab_font">
+                <td align="right">
+                         8
+                </td>
+              </tr>
+            </table>
+          </p>
+        </div>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

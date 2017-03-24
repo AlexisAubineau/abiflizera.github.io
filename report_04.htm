@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                                        <a href="report_02.htm">Requête 2</a>
+                                        <a href="report_03.htm">Requête 3</a>
+                                        <a href="report_04.htm">Requête 4</a>
+                                        <a href="report_05.htm">Requête 5</a>
+                                        <a href="report_06.htm">Requête 6</a>
+                                        <a href="report_07.htm">Requête 7</a>
+                                        <a href="report_08.htm">Requête 8</a>
+                                        <a href="report_09.htm">Requête 9</a>
+                                        <a href="report_10.htm">Requête 10</a>
+                                        <a href="report_11.htm">Requête 11</a>
+                                        <a href="report_12.htm">Requête 12</a>
+                                        <a href="report_13.htm">Requête 13</a>
+                                        <a href="report_14.htm">Requête 14</a>
+                                        <a href="report_15.htm">Requête 15</a>
+                                        <a href="report_16.htm">Requête 16</a>
+                                        <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 4</u></h1>
+
+				<h2><u>Titre d'abonnement :</u></h2>
+
+        <p>
+          En prévision de la rentrée, OLVoyage prévoie une campagne publicitaire pour vendre ses abonnements. À la date du 30 novembre 2016, affichez les noms et les prénoms des clients avec leur titre d’abonnement. Si le client a un abonnement périmé , affichez le titre d’abonnement avec Périmé !, si le client n’a aucun abonnement affichez Aucun.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+              SQL&gt; Select  upper(c.last_name)||' '||c.first_name &quot;Abonné&quot;,p.pass_name &quot;abonnement&quot;,
+                2     case
+                3     when add_months(c.pass_date,12) is null then 'Aucun'
+                4     when add_months(c.pass_date,12) &lt; to_date('30-Novembre-2016') then 'Périmé !'
+                5     end &quot;titre périmé ! ou non&quot;
+                6  from t_customer c
+                7  join t_pass p
+                8  on (c.pass_id = p.pass_id )
+                9  union all
+               10  select  upper(last_name)||' '||first_name &quot;Abonné&quot;,to_char(null) &quot;abonnement&quot;,
+               11  case
+               12  when add_months(pass_date,12) is null then 'Aucun'
+               13  when add_months(pass_date,12) &lt; to_date('30-Novembre-2016') then 'Périmé !'
+               14  end &quot;titre_périmé !_ou_non&quot;
+               15  from t_customer
+               16  where pass_date is null
+               17  order by &quot;Abonné&quot;;
+            </pre>
+          </code>
+        </div>
+
+        <br>
+
+        <div>
+          <p>
+          <table border='1' align='center' summary='Script output' width='60%'>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ALBERT Thomas
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ALEN Doug
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BARNES Bill
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BARNES Katherine
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BARNES Luann
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BARNES Ted
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BAUER John
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BROOKE Morgan
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BURTON Albert
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BURTON Whitney
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          CLARK Paul
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          COLLINS Ben
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          COOPER Clarck
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          CUNNINGHAM Charles
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          CUNNINGHAM Dennis
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          Périmé !
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          DALTON Vance
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          DAWN Lane
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ERICKSON Harvey
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ERICKSON Leonard
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ERICKSON Lou
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          Périmé !
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FERGUSON Angie
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FIELDS Romain
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FLEMING Steve
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FRASER Faun
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FRASER Thomas
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          GORDON Rosemary
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          GORDON Roy
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          GRAHAM Linda
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HAMILTON Dory
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HAMILTON Melvin
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          Périmé !
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HANCOCK Marcia
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HARRIS Brandy
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HARRIS Joe
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HEALY Stacy
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HENDRIX Charles
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HERMAN Smith
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HERMAN Tom
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HESS Katherine
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HOLMES Martin
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          JACOBS Tarryn
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          LANDERS Philip
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          LANDERS Robert
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          LANG Wayne
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          LARSON Arthur
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          LYONS Gordons
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MAUGARD Gregory
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MCDANIELS Stacy
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MCDANIELS Wayne
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MICHAELS Timothy
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MILER Victor
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MILLER Alex
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          MORRIS Tim
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          NIELSEN Melvin
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          NIELSEN Raph
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          Périmé !
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          NOVAK Craig
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          NOVAK Jessie
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          OSWALD Georges
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          OSWALD Ty
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PARKER Steve
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PATTERSON Philip
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PETERSEN David
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PETERSEN Melody
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PHILIPS Rich
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          POWEL Tom
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          QUINN Rosemary
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          REYNOLDS Philip
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          REYNOLDS Samantha
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          RICE Joe
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          RICHARDS Paul
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          RICHARDSON Lauren
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          Abonné
+          </th>
+          <th scope="col">
+          abonnement
+          </th>
+          <th scope="col">
+          titre 
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ROSS Lou
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          Périmé !
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          SANDERS Laurie
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          SATTLER Jack
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          SMITH Kevin
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          STEINBACH Barbra
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          TUCKER Gerard
+          </td>
+          <td>
+          15-25
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          WARREN Paul
+          </td>
+          <td>
+          Senior
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          WAYNE Leonard
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          WAYNE Williams
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          WHITE Elliott
+          </td>
+          <td>
+          Pro
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          WILLIAMS Megan
+          </td>
+          <td>
+          &nbsp;
+          </td>
+          <td>
+          Aucun
+          </td>
+          </tr>
+          </table>
+          <p>
+          <p>81 ligne(s) sélectionnée(s).</p>
+        </div>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

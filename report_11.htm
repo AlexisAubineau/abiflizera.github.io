@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 11</u></h1>
+
+				<h2><u>Trains de Paris :</u></h2>
+
+        <p>
+          OLVoyage a besoin des statistiques sur les trains partant de Paris. Affichez les numéros des trains et les noms des trains avec le titre de chaque abonnement. Calculez également les tarifs comprenant chaque type de réduction pendant la semaine et le week-end. Ne pas prendre en compte les augmentations dues à la classe. Triez les résultats par numéro du train.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+                SQL&gt; select tt.train_id ||' '||'('|| ts.city ||'-'|| tss.city||')' nom_train , tt.price prix, p.pass_name nom_abonnement,
+                  2  CASE
+                  3   WHEN TO_CHAR(tt.arrival_time, 'Day') IN ('Samedi', 'Dimanche')
+                  4   THEN (tt.price*(1-(NVL(p.discount_we_pct, 0)/100)))
+                  5   WHEN TO_CHAR(tt. arrival_time, 'Day') = 'Vendredi' AND TO_CHAR(tt. arrival_time, 'HH24') &gt; 18
+                  6   THEN (tt.price*(1-(NVL(p.discount_we_pct, 0)/100)))
+                  7  ELSE (tt.price*(1-(NVL(p.discount_pct, 0)/100)))
+                  8   END prix
+                  9  from t_train tt
+                 10   JOIN t_station ts
+                 11    ON tt.departure_station_id=ts.station_id
+                 12   JOIN t_station tss
+                 13    ON tt.arrival_station_id=tss.station_id
+                 14   cross join t_pass p
+                 15   where ts.city = 'Paris';
+            </pre>
+          </code>
+      </div>
+
+      <br>
+
+      <div>
+        <p>
+          <table border='1' align='center' summary='Script output' width='40%'>
+          <tr class="tab_head">
+          <th scope="col">
+          NOM_TRAIN
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          <th scope="col">
+          NOM_ABONNEMENT
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          1 (Paris-Bordeaux)
+          </td>
+          <td align="right">
+               120,5
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+               60,25
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          1 (Paris-Bordeaux)
+          </td>
+          <td align="right">
+               120,5
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+                72,3
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          1 (Paris-Bordeaux)
+          </td>
+          <td align="right">
+               120,5
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+               84,35
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          3 (Paris-Marseille)
+          </td>
+          <td align="right">
+                 154
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+               115,5
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          3 (Paris-Marseille)
+          </td>
+          <td align="right">
+                 154
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+               123,2
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          3 (Paris-Marseille)
+          </td>
+          <td align="right">
+                 154
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+               130,9
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          12 (Paris-Nice)
+          </td>
+          <td align="right">
+              168,75
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+              84,375
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          12 (Paris-Nice)
+          </td>
+          <td align="right">
+              168,75
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+              101,25
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          12 (Paris-Nice)
+          </td>
+          <td align="right">
+              168,75
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+             118,125
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          26 (Paris-Saint-Malo)
+          </td>
+          <td align="right">
+                87,5
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+               43,75
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          26 (Paris-Saint-Malo)
+          </td>
+          <td align="right">
+                87,5
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+                52,5
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          26 (Paris-Saint-Malo)
+          </td>
+          <td align="right">
+                87,5
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+               61,25
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          36 (Paris-Calais)
+          </td>
+          <td align="right">
+                72,5
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+               36,25
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          36 (Paris-Calais)
+          </td>
+          <td align="right">
+                72,5
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+                43,5
+          </td>
+          </tr>
+          <tr class="tab_head">
+          <th scope="col">
+          NOM_TRAIN
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          <th scope="col">
+          NOM_ABONNEMENT
+          </th>
+          <th scope="col">
+          PRIX
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          36 (Paris-Calais)
+          </td>
+          <td align="right">
+                72,5
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+               50,75
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          42 (Paris-Le Havre)
+          </td>
+          <td align="right">
+               41,25
+          </td>
+          <td>
+          15-25
+          </td>
+          <td align="right">
+              20,625
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          42 (Paris-Le Havre)
+          </td>
+          <td align="right">
+               41,25
+          </td>
+          <td>
+          Senior
+          </td>
+          <td align="right">
+               24,75
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          42 (Paris-Le Havre)
+          </td>
+          <td align="right">
+               41,25
+          </td>
+          <td>
+          Pro
+          </td>
+          <td align="right">
+              28,875
+          </td>
+          </tr>
+          </table>
+        </p>
+        <p>18 ligne(s) sélectionnée(s).</p>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

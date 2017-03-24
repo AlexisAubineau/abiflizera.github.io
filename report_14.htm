@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 14</u></h1>
+
+				<h2><u>Places disponibles :</u></h2>
+
+        <p>
+          Ne prendre en compte que les trains qui ont parcouru une distance supérieure à 300 Km le 22/01/2017 et pour lesquels des billets ont été réservés.
+          <br>
+          Triez les résultats par le numéro du train.
+        </p>
+
+        <br>
+
+        <div>
+          <code>
+            <pre>
+              SQL&gt; SELECT tt.train_id || ' - '|| ts.city || ' - ' || tss.city &quot;Train&quot;, sum(tw.nb_seat)-count(ttk.ticket_id) &quot;Nombre places&quot;
+                  2   FROM t_train tt
+                  3    JOIN t_station ts
+                  4     ON tt.departure_station_id=ts.station_id
+                  5    JOIN t_station tss
+                  6     ON tt.arrival_station_id=tss.station_id
+                  7    JOIN t_wagon_train twt
+                  8     ON tt.train_id=twt.train_id
+                  9    JOIN t_wagon tw
+                 10     ON twt.wagon_id=tw.wagon_id
+                 11    JOIN t_ticket ttk
+                 12     ON twt.wag_tr_id=ttk.wag_tr_id
+                 13  WHERE twt.train_id in (select tt.train_id from t_train)
+                 14  AND tt.distance &gt; 300
+                 15  AND tt.departure_time LIKE '22/01/17'
+                 16  GROUP BY tt.train_id, ts.city, tss.city
+                 17  ORDER BY tt.train_id;
+            </pre>
+          </code>
+        </div>
+
+          <br>
+
+        <div>
+          <p>
+          <table border='1' align='center' summary='Script output width='40%'>
+          <tr class="tab_head">
+          <th scope="col">
+          Train
+          </th>
+          <th scope="col">
+          Nombre places
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          3 - Paris - Marseille
+          </td>
+          <td align="right">
+                 162
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          4 - Marseille - Paris
+          </td>
+          <td align="right">
+                  86
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          7 - Lyon - Toulouse
+          </td>
+          <td align="right">
+                  29
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          8 - Toulouse - Lyon
+          </td>
+          <td align="right">
+                  19
+          </td>
+          </tr>
+          <<tr class="tab_font">
+          <td>
+          31 - Troyes - Lyon
+          </td>
+          <td align="right">
+                  19
+          </td>
+          </tr>
+          </table>
+          </p>
+          <p>5 ligne(s) sélectionnée(s).</p>
+        </div>
+			</div>
+      <br>
+		</div>
+	</body>
+
+</html>

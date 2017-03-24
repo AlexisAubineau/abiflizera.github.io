@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 2</u></h1>
+
+				<h2><u>Acheteurs réservistes sans billet Page :</u></h2>
+
+        <div>
+          <code>
+            <pre>
+              SQL&gt; SELECT unique(upper(c.last_name)|| ' ' ||c.first_name) AS resa_autre_personne
+                2  FROM t_reservation r
+                3  JOIN t_ticket t
+                4  ON(t.reservation_id = r.reservation_id)
+                5  JOIN t_customer c
+                6  ON (c.customer_id = t.customer_id)
+                7  WHERE r.buyer_id != c.customer_id
+                8  ORDER BY resa_autre_personne;
+            </pre>
+          </code>
+        </div>
+
+        <br>
+
+        <div>
+          <p>
+          <table border='1' align='center' summary='Script output' width='40%'>
+          <tr class="tab_head">
+          <th scope="col">
+          RESA_AUTRE_PERSONNE
+          </th>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BARNES Bill
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          BURTON Whitney
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ERICKSON Leonard
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          FIELDS Romain
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          GORDON Rosemary
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          HESS Katherine
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PARKER Steve
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PETERSEN David
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PETERSEN Melody
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          PHILIPS Rich
+          </td>
+          </tr>
+          <tr class="tab_font">
+          <td>
+          ROSS Lou
+          </td>
+          </tr>
+          </table>
+          </p>
+          <p>11 ligne(s) sélectionée(s)</p>        
+        </div>
+      </div>
+      <br>
+		</div>
+	</body>
+
+</html>

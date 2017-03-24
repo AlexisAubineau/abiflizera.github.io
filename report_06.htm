@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ol voyage</title>
+	<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+  <meta name="generator" content="SQL*Plus 10.2.0">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+	<body>
+		<div class="site_contents">
+			<div class="nav_barre">
+				<nav>	
+					<ul>
+ 					 	<li><a href="index.html">Home</a></li>
+  						<li><a href="projet.html">Suivi du projet</a></li>
+  						<li class="dropdown"><a href="javascript:void(0)" class="dropbtn">Requête</a>
+    						<div class="dropdown-content">
+      							<a href="report_01.htm">Requête 1</a>
+                    <a href="report_02.htm">Requête 2</a>
+                    <a href="report_03.htm">Requête 3</a>
+                    <a href="report_04.htm">Requête 4</a>
+                    <a href="report_05.htm">Requête 5</a>
+                    <a href="report_06.htm">Requête 6</a>
+                    <a href="report_07.htm">Requête 7</a>
+                    <a href="report_08.htm">Requête 8</a>
+                    <a href="report_09.htm">Requête 9</a>
+                    <a href="report_10.htm">Requête 10</a>
+                    <a href="report_11.htm">Requête 11</a>
+                    <a href="report_12.htm">Requête 12</a>
+                    <a href="report_13.htm">Requête 13</a>
+                    <a href="report_14.htm">Requête 14</a>
+                    <a href="report_15.htm">Requête 15</a>
+                    <a href="report_16.htm">Requête 16</a>
+                    <a href="report_17.htm">Requête 17</a>
+    						</div>
+ 						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+
+			<div class="bloc1">
+				<h1 id="titre"><u>Requête 6</u></h1>
+
+				<h2><u>Statistique :</u></h2>
+
+          <p>
+            La société OLVoyage souhaite faire des statistiques. Affichez les totaux pour les unités suivantes : employés, clients, pourcentage des clients abonnés (bien évidemment les calculs doivent exclure les abonnements périmés), trains, gares, réservations, billets. Prendre en compte les réservations et les billets non payés.
+
+            Votre rapport ne contiendra qu’une seule ligne avec un total par colonne.
+          </p>
+
+          <br>
+          
+          <div>
+            <code>
+              <pre>
+            SQL&gt; Select
+              2     (Select count(employee_id) From t_employee) as employe,
+              3     (Select count(customer_id) From t_customer) as client,
+              4     (Select round(((sum(nvl2(pass_id,1,0 )))/count(customer_id))*100,2) From t_customer)  &quot;% ABONNES&quot;,
+              5     (Select count(train_id) From t_train) as train,
+              6     (Select count(station_id) From t_station) as station,
+              7     (Select count(reservation_id) From t_reservation) as reservation,
+              8     (Select count(ticket_id) From t_ticket) as ticket
+              9  From dual;
+              </pre>
+            </code>
+          </div>
+
+          <br>
+
+          <div>
+            <p>
+            <table border='1' align='center' summary='Script output' width='60%'>
+            <tr class="tab_head">
+            <th scope="col">
+            EMPLOYE
+            </th>
+            <th scope="col">
+            CLIENT
+            </th>
+            <th scope="col">
+            % ABONNES
+            </th>
+            <th scope="col">
+            TRAIN
+            </th>
+            <th scope="col">
+            STATION
+            </th>
+            <th scope="col">
+            RESERVATION
+            </th>
+            <th scope="col">
+            TICKET
+            </th>
+            </tr>
+            <tr class="tab_font">
+            <td align="right">
+                    14
+            </td>
+            <td align="right">
+                    81
+            </td>
+            <td align="right">
+                 43,21
+            </td>
+            <td align="right">
+                    42
+            </td>
+            <td align="right">
+                    21
+            </td>
+            <td align="right">
+                    41
+            </td>
+            <td align="right">
+                    71
+            </td>
+            </tr>
+            </table>
+            <p>
+          </div>
+          <p>1 ligne(s) sélectionnée(s).</p>
+      </div>
+		</div>
+	</body>
+
+</html>
